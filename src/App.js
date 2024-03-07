@@ -50,7 +50,7 @@ function Home() {
       :
         <div className='min-vh-100 w-100 d-flex flex-column contain'>
           <Navbar/>
-          <div className='bitcoinBox100 m-4'><Bitcoin/></div>
+          <div className='bitcoinBox100 m-4'><Bitcoin coin = {coin}/></div>
           <OptionList/>
           <PerformancePlaceholder/>
           <BitcoinPlaceholder/>
