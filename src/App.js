@@ -3,6 +3,13 @@ import Navbar from './components/navbar.js';
 import DispPage from './components/dispPage.js';
 import YouMayLikeList from './components/youMayLike.js';
 import OptionList from './components/optionList.js';
+import { 
+  PerformancePlaceholder, 
+  BitcoinPlaceholder,
+  SentimentPlaceholder,
+  TokenomicsPlaceholder,
+  TeamPlaceholder, 
+} from './components/placeHolders.js'
 
 function App() {
   return (
@@ -10,6 +17,11 @@ function App() {
       <Navbar/>
       <DispPage/>
       <OptionList/>
+      <PerformancePlaceholder/>
+      <BitcoinPlaceholder/>
+      <SentimentPlaceholder/>
+      <TokenomicsPlaceholder/>
+      <TeamPlaceholder/>
       <div className='mt-5 mb-5'>
         <YouMayLikeList heading={"You may also like"}/>
         <YouMayLikeList heading={"Trending Coins"}/>
