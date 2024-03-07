@@ -19,8 +19,9 @@
 
 .changePositive{
     background-color: rgb(233, 250, 233);
-    padding :7px;
+    padding :5px;
 }
+
 .changeNegative{
     background-color: rgb(250, 228, 228);
     padding : 7px;

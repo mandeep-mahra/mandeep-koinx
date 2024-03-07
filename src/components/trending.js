@@ -22,7 +22,6 @@ export default function Trending(){
                     (trendingData.coins).map((coin, index) => (
                             (index < 3)? 
                             <div className='coinList w-100 d-flex justify-content-between align-items-center'>
-                                {console.log(coin)}
                                 <div>
                                     <img className = "coinLogo" src = {coin.item.small}/>
                                     <span className = "coinName">{coin.item.name}</span>

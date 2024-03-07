@@ -14,7 +14,7 @@ export default function GetStarted(){
                 <img src = {dispImage}/>
                 <button className=' pb-3 btn btn-light'>
                     Get Started for FREE
-                    <span className='arrow'>&rarr;</span> 
+                    <span className='arrowright'>&rarr;</span> 
                 </button>
             </div>
         </>
