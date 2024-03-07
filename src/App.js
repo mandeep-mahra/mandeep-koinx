@@ -73,7 +73,7 @@ function App(){
   return(
     <>
       <Routes>
-        <Route exact path="/:coin" 
+        <Route exact path="/coins/:coin" 
           element={<Home coinId={useParams().coin}/>}
         />
       </Routes>
