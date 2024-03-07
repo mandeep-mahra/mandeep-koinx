@@ -1,19 +1,21 @@
 // TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from 'react';
+import { getDropdownMenuPlacement } from 'react-bootstrap/esm/DropdownMenu';
 
-function TradingChart() {
+function TradingChart(props) {
   const container = useRef();
-
+  
   useEffect(
     () => {
       const script = document.createElement("script");
+      const symbol = props.symbol;
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.type = "text/javascript";
       script.async = true;
       script.innerHTML = `
         {
           "autosize": true,
-          "symbol": "BITSTAMP:BTCUSD",
+          "symbol": "` + symbol + `",
           "interval": "W",
           "timezone": "Etc/UTC",
           "theme": "light",
@@ -32,6 +34,8 @@ function TradingChart() {
     },
     []
   );
+
+  
 
   return (
     <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>

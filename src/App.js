@@ -14,9 +14,11 @@ import {
   TeamPlaceholder, 
 } from './components/placeHolders.js'
 import { useEffect, useState } from 'react';
+import { Route, Routes, useParams } from 'react-router-dom';
 
-function App() {
+function Home() {
   const [width, setWindowDimensions] = useState(window.innerWidth);
+  const { coin } = useParams();
   useEffect(() => {
       function handleResize() {
       setWindowDimensions(window.innerWidth);
@@ -26,12 +28,13 @@ function App() {
       return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
   return (
     <>
       {(width > 900) ? 
         <div className='min-vh-100 w-100 d-flex flex-column contain'>
           <Navbar/>
-          <DispPage/>
+          <DispPage coin = {coin}/>
           <OptionList/>
           <div className='bitcoinBox65 m-5 rounded-4'><PerformancePlaceholder/></div>
           <div className='bitcoinBox65 m-5 rounded-4'><BitcoinPlaceholder/></div>
@@ -64,6 +67,18 @@ function App() {
       }
     </>
   );
+}
+
+function App(){
+  return(
+    <>
+      <Routes>
+        <Route exact path="/:coin" 
+          element={<Home coinId={useParams().coin}/>}
+        />
+      </Routes>
+    </>
+  )
 }
 
 export default App;

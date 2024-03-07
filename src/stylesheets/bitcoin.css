@@ -18,19 +18,20 @@
 }
 
 .changePositive{
+    width: fit-content;
     background-color: rgb(233, 250, 233);
-    padding :5px;
+    font-size: 1vw;
+    padding : 0.5vh;
 }
 
 .changeNegative{
     background-color: rgb(250, 228, 228);
-    padding : 7px;
-}
-.changeNum{
-    font-size: 2.5vh;
+    font-size: 1vw;
+    padding : 0.5vh;
 }
 .timeDuration{
     color: gray;
+    font-size: 1.25vw;
 }
 .inr{
     margin-top: 1vh;

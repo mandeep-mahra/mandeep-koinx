@@ -8,7 +8,7 @@
     border : solid rgb(226, 223, 223) 1px;
 }
 .coinLogo{
-    height : 5vh;
+    max-height : 5vh;
 }
 .changeNum, .arrow{
     font-size: 1.5vh;

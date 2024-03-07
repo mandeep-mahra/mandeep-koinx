@@ -47,7 +47,7 @@ export default function YouMayLikeList( props ){
                 trendingData.coins.map((coin) => (
                     <SwiperSlide>
                     <div className='carousel-item rounded likeListItem d-flex flex-column'>
-                        <div className='listItemInfo d-flex flex-row'>
+                        <div className='listItemInfo d-flex flex-row align-items-center'>
                             <img className="coinLogo" src = {coin.item.small}/>
                             <span className='ms-2'>
                                 <p>{coin.item.name}</p>
@@ -55,18 +55,15 @@ export default function YouMayLikeList( props ){
                             
                             {
                                 (coin.item.data.price_change_percentage_24h.usd > 0)?
-                                <div className='ms-3 changeTrending text-success changePositive rounded'>	
-                                    <span className='arrow mt-2'>&#9650;</span>
-                                    <span className='changeNum'>
-                                        {coin.item.data.price_change_percentage_24h.usd.toFixed(2)}%
-                                    </span>
-                                </div>:
-                                <div className='ms-3 changeTrending text-danger changeNegative rounded'>
-                                    <span className='arrow'>&#9660;</span>
-                                    <span className='changeNum'>
-                                        {coin.item.data.price_change_percentage_24h.usd.toFixed(2)}%
-                                    </span>
+                                    
+                                <div className='ms-5 rounded changeNum text-success changePositive'>
+                                    &#9650;{coin.item.data.price_change_percentage_24h.usd.toFixed(2)}%
                                 </div>
+                                :
+                                <span className='ms-5 rounded changeNUm tes-danger changeNegative'>
+                                    &#9660; {coin.item.data.price_change_percentage_24h.usd.toFixed(2)}%
+                                </span>
+                                
                             }
                         </div>
                         <img className = "m-3" src = {coin.item.data.sparkline}/>
