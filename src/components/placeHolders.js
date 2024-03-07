@@ -45,7 +45,7 @@ function PerformancePlaceholder(){
     return(
         <>
             {(width > 900) ? 
-            <div className="rounded-4 bitcoinBox65 mt-4 ms-5 me-5 p-4">
+            <div className="rounded-4 bitcoinBox100 mt-4 ms-5 me-5 p-4">
                 <h2>Performance</h2>
                 <img className = "w-100" src = {phImage}/>
             </div>:
@@ -78,9 +78,19 @@ function PlaceholderCard(props){
 }
 
 function SentimentPlaceholder(){
+    const [width, setWindowDimensions] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+        setWindowDimensions(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return(
         <>
-            <div className="rounded-4 bitcoinBox65 mt-4 ms-5 me-5 p-4">
+            <div className="rounded-4 bitcoinBox100 mt-4 ms-5 me-5 p-4">
                 <h2>Sentiment</h2>
                 <h4 className="text-secondary">
                     Key Events
@@ -89,8 +99,8 @@ function SentimentPlaceholder(){
                 <div className="cardContain ms-4 me-4">
                     <Swiper
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
-                        spaceBetween={20}
-                        slidesPerView={2}
+                        spaceBetween={(width > 900 ) ? 20 : 5}
+                        slidesPerView={(width > 900 ) ? 2 : 1}
                         navigation
                     >   
                         <SwiperSlide>
@@ -154,7 +164,7 @@ function SentimentPlaceholder(){
 
 function BitcoinPlaceholder(){
     return(
-        <div className="rounded-4 bitcoinBox65 mt-4 ms-5 me-5 p-4">
+        <div className="rounded-4 bitcoinBox100 mt-4 ms-5 me-5 p-4">
             <h2>About Bitcoin</h2>
             <h4 className="mt-4">What is Bitcoin?</h4>
             <p>
@@ -200,7 +210,7 @@ function BitcoinPlaceholder(){
 function TokenomicsPlaceholder(){
     return(
         <>
-            <div className="mt-4 rounded-4 bitcoinBox65 ms-5 me-5 p-4">
+            <div className="mt-4 rounded-4 bitcoinBox100 ms-5 me-5 p-4">
                 <h2>Tokenomics</h2>
                 <h4 className="mt-4">Initial Distribution</h4>
                 <div>
@@ -231,7 +241,7 @@ function TeamPlaceholder(){
     return(
         <>
             {(width > 900) ? 
-            <div className="mt-4 rounded-4 bitcoinBox65 ms-5 me-5 p-4">
+            <div className="team mt-4 rounded-4 bitcoinBox100 ms-5 me-5 p-4">
                 <h2>Team</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -261,7 +271,7 @@ function TeamPlaceholder(){
                 }
             </div>
             :
-            <div className="mt-4 rounded-4 bitcoinBox ms-5 me-5 p-4">
+            <div className="mt-4 rounded-4 bitcoinBox100 ms-5 me-5 p-4">
                 <h2>Team</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

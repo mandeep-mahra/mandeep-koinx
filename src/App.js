@@ -33,11 +33,11 @@ function App() {
           <Navbar/>
           <DispPage/>
           <OptionList/>
-          <PerformancePlaceholder/>
-          <BitcoinPlaceholder/>
-          <SentimentPlaceholder/>
-          <TokenomicsPlaceholder/>
-          <TeamPlaceholder/>
+          <div className='bitcoinBox65 m-5 rounded-4'><PerformancePlaceholder/></div>
+          <div className='bitcoinBox65 m-5 rounded-4'><BitcoinPlaceholder/></div>
+          <div className='bitcoinBox65 m-5 rounded-4'><SentimentPlaceholder/></div>
+          <div className='bitcoinBox65 m-5 rounded-4'><TokenomicsPlaceholder/></div>
+          <div className='bitcoinBox65 m-5 rounded-4'><TeamPlaceholder/></div>
           <div className='mt-5 mb-5'>
             <YouMayLikeList heading={"You may also like"}/>
             <YouMayLikeList heading={"Trending Coins"}/>
@@ -47,7 +47,7 @@ function App() {
       :
         <div className='min-vh-100 w-100 d-flex flex-column contain'>
           <Navbar/>
-          <Bitcoin/>
+          <div className='bitcoinBox100 m-4'><Bitcoin/></div>
           <OptionList/>
           <PerformancePlaceholder/>
           <BitcoinPlaceholder/>

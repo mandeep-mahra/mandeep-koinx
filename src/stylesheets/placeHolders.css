@@ -4,12 +4,12 @@
 }
 .bitcoinBox100{
     background-color:#ffffff;
-    width : 90%;
+    width : 80%;
 }
 
 .infoLogo{
     margin-left: 1vh;
-    width: 3vh;
+    width: 2vw;
 }
 .score{
     font-size: 3vw;
@@ -50,4 +50,13 @@
 }
 .teamContainer{
     background-color: #e4f7f3;
+}
+p{
+    font-size: 1vw;
+}
+.font2{
+    font-size: 2vw;
+}
+.team{
+    font-size: 1vw;
 }

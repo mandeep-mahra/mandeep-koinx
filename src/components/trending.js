@@ -16,7 +16,7 @@ export default function Trending(){
     }, [])
     return (
         <>
-            <div className=" containTrend d-flex flex-column p-4 me-5 align-items-center justify-content-center">
+            <div className=" containTrend d-flex flex-column p-4 m-4 align-items-center justify-content-center">
                 <span>Trending Coins (24h)</span>
                 {
                     (trendingData.coins).map((coin, index) => (

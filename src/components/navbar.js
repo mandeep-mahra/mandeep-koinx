@@ -1,20 +1,41 @@
+import { useEffect, useState } from 'react';
 import logo from '../resources/logo.svg';
+import option from '../resources/option.webp';
 import "../stylesheets/navbar.css";
 
 export default function Navbar(){
+    const [width, setWindowDimensions] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+        setWindowDimensions(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return(
-        <>
-            <nav className="d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light w-100 shadow">
-                <a className="navbar-brand" href="#">   
-                    <img className="logo" src={logo}></img>
-                </a>
-                <div className="navBarButtons d-flex flex-row gap-4">
-                    <span className="d-flex align-items-center">Crypto Taxes</span>
-                    <span className="d-flex align-items-center">Free Tools</span>
-                    <span className="d-flex align-items-center">Resources Center</span>
-                    <button className='btn btn-primary rounded'> Get Started</button>
-                </div>
-            </nav>
+        <>  
+            {(width> 900) ? 
+                <nav className="d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light w-100 shadow">
+                    <a className="navbar-brand" href="#">   
+                        <img className="logo" src={logo}></img>
+                    </a>
+                    <div className="navBarButtons d-flex flex-row gap-4">
+                        <span className="d-flex align-items-center">Crypto Taxes</span>
+                        <span className="d-flex align-items-center">Free Tools</span>
+                        <span className="d-flex align-items-center">Resources Center</span>
+                        <button className='btn btn-primary rounded'> Get Started</button>
+                    </div>
+                </nav>:
+                <nav className="d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light w-100 shadow">
+                    <a className="navbar-brand" href="#">   
+                        <img className="logo" src={logo}></img>
+                    </a>
+                    <div className="navBarButtons d-flex flex-row gap-4">
+                        <img className='logo' src = {option}/>
+                    </div>
+                </nav>
+            }
         </>
     )
 }

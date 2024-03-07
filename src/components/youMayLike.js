@@ -25,13 +25,22 @@ export default function YouMayLikeList( props ){
         })
         .catch((error) => console.error(error));
     }, [])
+    const [width, setWindowDimensions] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+        setWindowDimensions(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
         <div data-ride="carousel" className = "likeList rounded p-4 carousel">
             <span className="heading">{props.heading}</span>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={20}
-                slidesPerView={4}
+                spaceBetween={(width > 900) ? 20 : 5}
+                slidesPerView={(width > 900) ? 5 : 2}
                 navigation
             >
             {
@@ -41,7 +50,7 @@ export default function YouMayLikeList( props ){
                         <div className='listItemInfo d-flex flex-row'>
                             <img className="coinLogo" src = {coin.item.small}/>
                             <span className='ms-2'>
-                                {coin.item.name}
+                                <p>{coin.item.name}</p>
                             </span>
                             
                             {
