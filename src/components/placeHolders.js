@@ -1,22 +1,152 @@
 import "../stylesheets/placeHolders.css";
-import info from '../resources/infoLogo.png'
+import info from '../resources/infoLogo.png';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import icon1 from '../resources/icon1.png';
+import icon2 from '../resources/icon2.jpg';
+import phChart from '../resources/placeholderChart.png';
+import phImage from '../resources/placeHolderImage.png';
+import tm1 from '../resources/person1.png';
+import tm2 from '../resources/person2.png';
+import tm3 from '../resources/person3.png';
+import { useEffect, useState } from "react";
+
+
+const team = [
+    {
+        Name : "John Smith",
+        image : tm1
+    },
+    {
+        Name : "Elia William",
+        image : tm2
+    },{
+        Name : "John Doe",
+        image : tm3
+    }
+]
+
 
 function PerformancePlaceholder(){
+    const [width, setWindowDimensions] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+        setWindowDimensions(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return(
         <>
+            {(width > 900) ? 
+            <div className="rounded-4 bitcoinBox65 mt-4 ms-5 me-5 p-4">
+                <h2>Performance</h2>
+                <img className = "w-100" src = {phImage}/>
+            </div>:
+            <div className="bitcoinBox100 rounded-4 mt-4 ms-5 me-5 p-4">
+                <h2>Performance</h2>
+                <img className = "w-100" src = {phImage}/>
+            </div>
+            }
+
         </>
+    )
+}
+
+function PlaceholderCard(props){
+    return(
+        <div className="p-4 d-flex flex-row">
+            <div className="">
+                <img className = "ms-0 logo" src = {props.icon}/>
+                
+            </div>
+            <div className="ms-1">
+                <b>{props.heading}</b>
+                <p>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis 
+                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+                </p>
+            </div>
+        </div>
     )
 }
 
 function SentimentPlaceholder(){
     return(
         <>
-            <div className="rounded-4 bitcoinBox mt-4 ms-5 me-5 p-4">
+            <div className="rounded-4 bitcoinBox65 mt-4 ms-5 me-5 p-4">
                 <h2>Sentiment</h2>
                 <h4 className="text-secondary">
                     Key Events
                     <img className="infoLogo" src = {info}/>
                 </h4>
+                <div className="cardContain ms-4 me-4">
+                    <Swiper
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={20}
+                        slidesPerView={2}
+                        navigation
+                    >   
+                        <SwiperSlide>
+                            <PlaceholderCard 
+                                heading={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."} 
+                                icon = {icon1}
+                            />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <PlaceholderCard 
+                                heading={"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} 
+                                icon = {icon2}
+                            />
+                        </SwiperSlide>     
+                        <SwiperSlide>
+                            <PlaceholderCard 
+                                heading={"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod."} 
+                                icon = {icon2}
+                            />
+                        </SwiperSlide>                
+                    </Swiper>
+                </div>
+                <h4 className="text-secondary mt-4">
+                    Analyst Estimates
+                    <img className="infoLogo" src = {info}/>
+                </h4>
+                <div className="d-flex felx-row">
+                    <div className="score text-success">
+                        76%
+                    </div>
+                    <div className="tableAnalyst text-secondary d-flex flex-column p-4">
+                        <table>
+                            <tr>
+                                <td>Buy</td>
+                                <td >
+                                    <div className="barArea buy bg-success"></div>
+                                </td>
+                                <td> 76%</td>
+                            </tr>
+                            <tr>
+                                <td>Sell</td>
+                                <td >
+                                    <div className="barArea sell"></div>
+                                </td>
+                                <td> 8%</td>
+                            </tr>
+                            <tr>
+                                <td>Hold</td>
+                                <td >
+                                    <div className="barArea hold bg-danger"></div>
+                                </td>
+                                <td> 16%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </>
     )
@@ -24,7 +154,7 @@ function SentimentPlaceholder(){
 
 function BitcoinPlaceholder(){
     return(
-        <div className="rounded-4 bitcoinBox ms-5 me-5 p-4">
+        <div className="rounded-4 bitcoinBox65 mt-4 ms-5 me-5 p-4">
             <h2>About Bitcoin</h2>
             <h4 className="mt-4">What is Bitcoin?</h4>
             <p>
@@ -70,11 +200,11 @@ function BitcoinPlaceholder(){
 function TokenomicsPlaceholder(){
     return(
         <>
-            <div className="mt-4 rounded-4 bitcoinBox ms-5 me-5 p-4">
+            <div className="mt-4 rounded-4 bitcoinBox65 ms-5 me-5 p-4">
                 <h2>Tokenomics</h2>
                 <h4 className="mt-4">Initial Distribution</h4>
                 <div>
-                    chart here
+                    <img className = "chartImage" src = {phChart}/>
                 </div>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -89,8 +219,76 @@ function TokenomicsPlaceholder(){
     )
 }
 function TeamPlaceholder(){
+    const [width, setWindowDimensions] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+        setWindowDimensions(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return(
         <>
+            {(width > 900) ? 
+            <div className="mt-4 rounded-4 bitcoinBox65 ms-5 me-5 p-4">
+                <h2>Team</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                    anim id est laborum. 
+                </p>
+                {   team.map((member) => 
+                    <div className="d-flex p-3 m-2 teamContainer rounded-3">
+                        <div className="d-flex flex-column justify-content-center align-items-center">
+                            <img className = "member" src = {member.image}/>
+                            <b>{member.Name}</b>
+                            <p className="text-secondary">Designation</p>
+                        </div>
+                        <div className="m-2">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                            anim id est laborum. 
+                        </div>
+                    </div>
+                    )
+                }
+            </div>
+            :
+            <div className="mt-4 rounded-4 bitcoinBox ms-5 me-5 p-4">
+                <h2>Team</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                    anim id est laborum. 
+                </p>
+                {   team.map((member) => 
+                    <div className="d-flex p-3 m-2 teamContainer rounded-3">
+                        <div className="d-flex flex-column justify-content-center align-items-center">
+                            <img className = "member" src = {member.image}/>
+                            <b>{member.Name}</b>
+                            <p className="text-secondary">Designation</p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                            anim id est laborum. 
+                        </div>
+                    </div>
+                    )
+                }
+            </div>
+            }
         </>
     )
 }

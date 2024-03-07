@@ -7,7 +7,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 export default function YouMayLikeList( props ){
     const [trendingData, setTrendingData] = useState({coins : []});
@@ -40,7 +39,6 @@ export default function YouMayLikeList( props ){
                     <SwiperSlide>
                     <div className='carousel-item rounded likeListItem d-flex flex-column'>
                         <div className='listItemInfo d-flex flex-row'>
-                            {console.log(coin)}
                             <img className="coinLogo" src = {coin.item.small}/>
                             <span className='ms-2'>
                                 {coin.item.name}
